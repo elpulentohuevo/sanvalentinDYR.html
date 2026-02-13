@@ -1,436 +1,205 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Para ti 💌</title>
-  <style>
-    :root{
-      --bg1:#0b0b12;
-      --bg2:#140b1a;
-      --card:#ffffff10;
-      --card2:#ffffff14;
-      --border:#ffffff22;
-      --text:#f7f3ff;
-      --muted:#d9d0f0;
-      --accent:#ff4d8d;
-      --accent2:#ff9ac0;
-      --ok:#6ee7b7;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      min-height:100vh;
-      color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 700px at 20% 10%, #3b0a3b55, transparent 60%),
-        radial-gradient(1000px 600px at 80% 30%, #ff4d8d22, transparent 60%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-      overflow:hidden;
-    }
-    .wrap{
-      width:min(820px, 100%);
-      position:relative;
-    }
-    .card{
-      background:linear-gradient(180deg, var(--card), var(--card2));
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:28px;
-      box-shadow: 0 20px 60px #00000055;
-      backdrop-filter: blur(10px);
-      position:relative;
-      overflow:hidden;
-    }
-    .badge{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:#ffffff10;
-      color:var(--muted);
-      font-size:14px;
-      letter-spacing:.2px;
-    }
-    .dot{
-      width:10px;height:10px;border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, var(--accent2), var(--accent));
-      box-shadow:0 0 18px var(--accent);
-    }
-    h1{
-      margin:18px 0 8px;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height:1.05;
-      letter-spacing:-.6px;
-    }
-    p{
-      margin:0;
-      color:var(--muted);
-      font-size: clamp(15px, 2.2vw, 18px);
-      line-height:1.55;
-    }
-    .hr{
-      height:1px;
-      background:linear-gradient(90deg, transparent, #ffffff22, transparent);
-      margin:22px 0;
-    }
-    .btnrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:18px;
-      align-items:center;
-    }
-    button{
-      border:1px solid var(--border);
-      background:#ffffff10;
-      color:var(--text);
-      padding:12px 16px;
-      border-radius:14px;
-      cursor:pointer;
-      font-size:16px;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      user-select:none;
-    }
-    button:hover{ transform: translateY(-1px); background:#ffffff14; }
-    .primary{
-      border-color:#ff4d8d55;
-      background: linear-gradient(90deg, #ff4d8d22, #ff9ac022);
-      box-shadow: 0 0 0 0 rgba(255,77,141,.0);
-    }
-    .primary:hover{
-      border-color:#ff4d8daa;
-      box-shadow: 0 0 0 6px rgba(255,77,141,.10);
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Para ti 💘</title>
 
-    .stage{
-      display:none;
-      animation: fade .35s ease forwards;
-    }
-    .stage.active{ display:block; }
+<style>
+:root{
+--bg1:#070712;
+--bg2:#160818;
+--card:#ffffff12;
+--border:#ffffff25;
+--text:#f8f3ff;
+--muted:#ddd2f5;
+--accent:#ff4d8d;
+--accent2:#ff9ac0;
+}
 
-    @keyframes fade{
-      from{ opacity:0; transform: translateY(6px); }
-      to{ opacity:1; transform: translateY(0); }
-    }
+*{box-sizing:border-box}
 
-    /* Opciones */
-    .grid{
-      display:grid;
-      gap:12px;
-      margin-top:16px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    @media (max-width:620px){
-      .grid{ grid-template-columns: 1fr; }
-    }
-    .opt{
-      text-align:left;
-      padding:14px 14px;
-      border-radius:18px;
-      border:1px solid var(--border);
-      background:#ffffff0d;
-    }
-    .opt b{ display:block; margin-bottom:4px; }
-    .opt span{ color:var(--muted); font-size:14px; }
+body{
+margin:0;
+min-height:100vh;
+font-family:system-ui,-apple-system,Segoe UI,Roboto;
+color:var(--text);
+background:
+radial-gradient(1000px 600px at 20% 10%, #3b0a3b55, transparent 60%),
+linear-gradient(180deg,var(--bg1),var(--bg2));
+display:flex;
+align-items:center;
+justify-content:center;
+padding:24px;
+overflow:hidden;
+}
 
-    /* Botón NO travieso */
-    .no-wrap{
-      position:relative;
-      display:inline-block;
-    }
-    #btnNo{
-      position:relative;
-      touch-action: manipulation;
-    }
+.card{
+width:min(850px,100%);
+background:linear-gradient(180deg,var(--card),#ffffff08);
+border:1px solid var(--border);
+border-radius:28px;
+padding:32px;
+backdrop-filter:blur(10px);
+box-shadow:0 25px 70px rgba(0,0,0,.6);
+position:relative;
+}
 
-    /* Corazones sutiles */
-    .hearts{
-      position:absolute;
-      inset:-40px;
-      pointer-events:none;
-      opacity:.35;
-      filter: blur(.2px);
-    }
-    .heart{
-      position:absolute;
-      width:14px;height:14px;
-      background: radial-gradient(circle at 30% 30%, var(--accent2), var(--accent));
-      transform: rotate(45deg);
-      border-radius: 3px;
-      animation: float 10s linear infinite;
-    }
-    .heart:before,.heart:after{
-      content:"";
-      position:absolute;
-      width:14px;height:14px;
-      background: inherit;
-      border-radius:50%;
-    }
-    .heart:before{ left:-7px; top:0; }
-    .heart:after{ top:-7px; left:0; }
-    @keyframes float{
-      0%{ transform: translateY(0) rotate(45deg); opacity:.0; }
-      10%{ opacity:.5; }
-      100%{ transform: translateY(-260px) rotate(45deg); opacity:0; }
-    }
+h1{
+font-size:clamp(28px,4vw,46px);
+margin:0 0 10px;
+}
 
-    .small{
-      margin-top:10px;
-      font-size:13px;
-      color:#cfc6ea;
-      opacity:.9;
-    }
-    .pill{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:#ffffff10;
-      color:var(--muted);
-      font-size:14px;
-      margin-top:14px;
-    }
-    .check{
-      width:18px;height:18px;border-radius:50%;
-      background: rgba(110,231,183,.18);
-      border: 1px solid rgba(110,231,183,.35);
-      display:grid; place-items:center;
-      color: var(--ok);
-      font-weight:700;
-      font-size:12px;
-    }
-    .final{
-      margin-top:10px;
-      padding:14px 16px;
-      border-radius:18px;
-      border:1px solid rgba(255,77,141,.35);
-      background: linear-gradient(90deg, rgba(255,77,141,.16), rgba(255,154,192,.10));
-      color: var(--text);
-    }
-  </style>
+p{
+color:var(--muted);
+font-size:18px;
+line-height:1.6;
+margin:0;
+}
+
+.hr{
+height:1px;
+background:linear-gradient(90deg,transparent,#ffffff30,transparent);
+margin:25px 0;
+}
+
+button, a.btn{
+padding:12px 18px;
+border-radius:14px;
+border:1px solid var(--border);
+background:#ffffff10;
+color:var(--text);
+cursor:pointer;
+font-size:16px;
+transition:.2s;
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+gap:8px;
+}
+
+button:hover, a.btn:hover{
+transform:translateY(-2px);
+background:#ffffff20;
+}
+
+.primary{
+background:linear-gradient(90deg,#ff4d8d30,#ff9ac020);
+border-color:#ff4d8d80;
+}
+
+.stage{display:none;animation:fade .4s ease forwards;}
+.stage.active{display:block;}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(8px);}
+to{opacity:1;transform:translateY(0);}
+}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="card">
-      <div class="hearts" id="hearts"></div>
 
-      <!-- STAGE 1 -->
-      <section class="stage active" id="s1">
-        <div class="badge"><span class="dot"></span> Mensaje secreto para ti</div>
-        <h1>Hola, tú 💌</h1>
-        <p>
-          Tengo una pregunta importante…<br/>
-          Pero primero: prométeme que lo vas a leer con una sonrisa.
-        </p>
-        <div class="hr"></div>
-        <div class="btnrow">
-          <button class="primary" id="goS2">Sí, obvio 💖</button>
-          <button id="mini">Estoy nerviosa 🫣</button>
-        </div>
-        <p class="small" id="miniText" style="display:none;margin-top:12px;">
-          Tranquila… es una sorpresa bonita. Y sí, es para ti 🥹
-        </p>
-      </section>
+<div class="card">
 
-      <!-- STAGE 2 -->
-      <section class="stage" id="s2">
-        <div class="badge"><span class="dot"></span> Nivel: romántico + elegante</div>
-        <h1>¿Aceptarías ser mi San Valentín? 💘</h1>
-        <p>
-          No necesito nada perfecto…<br/>
-          Solo pasar ese día contigo, y hacerlo especial de verdad.
-        </p>
+<!-- STAGE 1 -->
+<section class="stage active" id="s1">
+<h1>Hola, mi amor 💘</h1>
+<p>
+Tengo una pregunta importante que hacerte…<br>
+Pero primero: prométeme que lo vas a leer con una sonrisa 😊
+</p>
 
-        <div class="hr"></div>
+<div class="hr"></div>
 
-        <div class="btnrow" style="position:relative;">
-          <button class="primary" id="btnYes">Sí 💕</button>
+<button class="primary" id="goS2">Sí, obvio 💖</button>
+<button id="mini">Estoy nerviosa 🫣</button>
 
-          <span class="no-wrap" id="noArea">
-            <button id="btnNo">No</button>
-          </span>
+<p id="miniText" style="display:none;margin-top:15px;color:#cfc6ea;">
+Tranquila… es algo bonito, te lo prometo ✨
+</p>
+</section>
 
-          <button id="btnObvio">Obvio que sí 😌</button>
-        </div>
+<!-- STAGE 2 -->
+<section class="stage" id="s2">
+<h1>¿Aceptarías ser mi San Valentín? 💝</h1>
+<p>
+No necesito nada perfecto…<br>
+Solo quiero un día contigo, lleno de cariño y risas 🥹💗
+</p>
 
-        <p class="small">*Tip: si intentas apretar “No”… puede que se ponga tímido 😅</p>
-      </section>
+<div class="hr"></div>
 
-      <!-- STAGE 3 -->
-      <section class="stage" id="s3">
-        <div class="badge"><span class="dot"></span> Elige tu destino</div>
-        <h1>Ok… ahora elige el plan 💞</h1>
-        <p>Elige una opción y te revelo la sorpresa final.</p>
+<button class="primary" id="btnYes">Sí 💕</button>
+<button id="btnNo">No</button>
 
-        <div class="grid">
-          <button class="opt" data-plan="🎬 Cine + algo dulce">
-            <b>Opción 1: Cine</b>
-            <span>Película + regalito dulce</span>
-          </button>
+<p style="margin-top:12px;color:#cfc6ea;">
+(Si intentas apretar “No”… puede que se mueva 😅)
+</p>
+</section>
 
-          <button class="opt" data-plan="🌅 Picnic sorpresa">
-            <b>Opción 2: Picnic</b>
-            <span>Algo rico + lugar bonito</span>
-          </button>
+<!-- STAGE 3 -->
+<section class="stage" id="s3">
+<h1>Te amo… gracias por elegirme 💗</h1>
+<p>
+Te elegiría una y mil veces más…<br>
+mi ojitos de anime 🥺✨
+</p>
 
-          <button class="opt" data-plan="🍝 Cena romántica">
-            <b>Opción 3: Cena</b>
-            <span>Elegante y con cariño</span>
-          </button>
+<div class="hr"></div>
 
-          <button class="opt" data-plan="🎁 Plan misterioso">
-            <b>Opción 4: Misterio</b>
-            <span>Confía en mí 😏</span>
-          </button>
-        </div>
+<a class="btn primary" target="_blank"
+href="https://www.youtube.com/watch?v=sBMF4dIqxKo">
+🎶 Esta será por siempre tu canción
+</a>
 
-        <div class="pill" id="picked" style="display:none;">
-          <span class="check">✓</span>
-          <span id="pickedText"></span>
-        </div>
+<br><br>
 
-        <div class="final" id="final" style="display:none;">
-          <p style="margin:0;">
-            Me encanta tu elección… pero la verdad, yo ya había elegido algo desde el principio:
-            <b>pasarlo contigo</b> 💖
-            <br/><br/>
-            ¿Confirmas oficialmente que eres mi San Valentín? 🥹
-          </p>
-          <div class="btnrow" style="margin-top:14px;">
-            <button class="primary" id="confirm">Confirmo 💘</button>
-          </div>
-        </div>
-      </section>
+<a class="btn" id="waBtn" target="_blank">
+💬 Enviar confirmación por WhatsApp
+</a>
 
-      <!-- STAGE 4 -->
-      <section class="stage" id="s4">
-        <div class="badge"><span class="dot"></span> Oficial</div>
-        <h1>Reservada oficialmente 💞</h1>
-        <p>
-          Gracias por decir que sí.<br/>
-          Ahora solo te queda una misión: llegar al 14 conmigo 🥰
-        </p>
-        <div class="hr"></div>
-        <p style="color:var(--muted);margin-bottom:12px;">Mensaje final:</p>
-        <div class="final">
-          <p style="margin:0">
-            Te amo. Y me hace feliz que seas tú.<br/>
-            <b>Feliz (casi) San Valentín</b> 💖
-          </p>
-        </div>
-      </section>
-    </div>
-  </div>
+</section>
 
-  <script>
-    // ===== Helpers =====
-    const $ = (id) => document.getElementById(id);
-    const show = (stageId) => {
-      ["s1","s2","s3","s4"].forEach(s => $(s).classList.remove("active"));
-      $(stageId).classList.add("active");
-    };
+</div>
 
-    // ===== Stage 1 =====
-    $("goS2").addEventListener("click", () => show("s2"));
-    $("mini").addEventListener("click", () => {
-      const el = $("miniText");
-      el.style.display = el.style.display === "none" ? "block" : "none";
-    });
+<script>
+const $ = id => document.getElementById(id);
 
-    // ===== Stage 2 (Yes/No) =====
-    const goYes = () => show("s3");
-    $("btnYes").addEventListener("click", goYes);
-    $("btnObvio").addEventListener("click", goYes);
+function show(stage){
+["s1","s2","s3"].forEach(s=>$(s).classList.remove("active"));
+$(stage).classList.add("active");
+}
 
-    // Botón NO que se mueve (PC hover + móvil touch)
-    const noBtn = $("btnNo");
-    const noArea = $("noArea");
-    let dodgeCount = 0;
+$("goS2").addEventListener("click",()=>show("s2"));
 
-    function dodge(){
-      dodgeCount++;
-      const maxX = 160;  // rango horizontal
-      const maxY = 80;   // rango vertical
-      const x = (Math.random()*2 - 1) * maxX;
-      const y = (Math.random()*2 - 1) * maxY;
+$("mini").addEventListener("click",()=>{
+const el=$("miniText");
+el.style.display = el.style.display==="none"?"block":"none";
+});
 
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+$("btnYes").addEventListener("click",()=>show("s3"));
 
-      // Si insiste mucho, le damos una salida graciosa
-      if (dodgeCount >= 6){
-        noBtn.textContent = "ya bueno 😅";
-      }
-      if (dodgeCount >= 8){
-        // lo mandamos a sí igual (porque amor)
-        show("s3");
-      }
-    }
+const noBtn=$("btnNo");
+let attempts=0;
 
-    noBtn.addEventListener("mouseenter", dodge);
-    noBtn.addEventListener("touchstart", (e) => {
-      e.preventDefault();
-      dodge();
-    }, {passive:false});
+function dodge(e){
+e.preventDefault();
+attempts++;
+const x=(Math.random()*2-1)*150;
+const y=(Math.random()*2-1)*80;
+noBtn.style.transform=`translate(${x}px,${y}px)`;
+if(attempts>=6) show("s3");
+}
 
-    // Si llega a hacer click igual (raro), lo movemos
-    noBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      dodge();
-    });
+noBtn.addEventListener("mouseenter",dodge);
+noBtn.addEventListener("touchstart",dodge,{passive:false});
+noBtn.addEventListener("click",dodge);
 
-    // ===== Stage 3 (Plans) =====
-    document.querySelectorAll(".opt").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const plan = btn.getAttribute("data-plan");
-        $("pickedText").textContent = `Elegiste: ${plan}`;
-        $("picked").style.display = "inline-flex";
-        $("final").style.display = "block";
-      });
-    });
+const phone="56971254125";
+const message="Sí, quiero ser tu San Valentín 💘";
+$("waBtn").href=`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+</script>
 
-    $("confirm").addEventListener("click", () => show("s4"));
-
-    // ===== Hearts background (subtle) =====
-    const hearts = $("hearts");
-    function spawnHeart(){
-      const h = document.createElement("div");
-      h.className = "heart";
-      const left = Math.random()*100;
-      const delay = Math.random()*3;
-      const duration = 8 + Math.random()*6;
-      const size = 10 + Math.random()*10;
-
-      h.style.left = left + "%";
-      h.style.bottom = (-20 - Math.random()*40) + "px";
-      h.style.animationDelay = delay + "s";
-      h.style.animationDuration = duration + "s";
-      h.style.width = size + "px";
-      h.style.height = size + "px";
-
-      hearts.appendChild(h);
-      setTimeout(() => h.remove(), (delay + duration) * 1000 + 500);
-    }
-    // genera algunos al inicio y luego de a poco
-    for(let i=0;i<10;i++) spawnHeart();
-    setInterval(spawnHeart, 900);
-  </script>
-</body>
-</html>
-
-    // genera algunos al inicio y luego de a poco
-    for(let i=0;i<10;i++) spawnHeart();
-    setInterval(spawnHeart, 900);
-  </script>
 </body>
 </html>
