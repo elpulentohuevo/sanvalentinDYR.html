@@ -7,10 +7,10 @@
 
 <style>
 :root{
-  --bg1:#0b0b15;
-  --bg2:#190a1f;
+  --bg1:#0c0c18;
+  --bg2:#1b0d25;
   --text:#f8f3ff;
-  --muted:#d9cfff;
+  --muted:#d8cdfa;
   --accent:#ff4d8d;
   --accent2:#ff9ac0;
 }
@@ -23,7 +23,7 @@ body{
   font-family:system-ui,-apple-system,Segoe UI,Roboto;
   color:var(--text);
   background:
-  radial-gradient(900px 600px at 20% 10%, #3b0a3b55, transparent 60%),
+  radial-gradient(1000px 600px at 20% 10%, #3b0a3b55, transparent 60%),
   linear-gradient(180deg,var(--bg1),var(--bg2));
   display:flex;
   align-items:center;
@@ -35,10 +35,11 @@ body{
   width:min(850px,100%);
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,255,255,0.15);
-  border-radius:28px;
+  border-radius:30px;
   padding:36px;
-  backdrop-filter:blur(10px);
-  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  backdrop-filter:blur(12px);
+  box-shadow:0 30px 90px rgba(0,0,0,.65);
+  position:relative;
 }
 
 h1{
@@ -61,13 +62,13 @@ p{
 
 button,a.btn{
   padding:14px 22px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,0.2);
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.25);
   background:rgba(255,255,255,0.08);
   color:white;
   font-size:16px;
   cursor:pointer;
-  transition:0.2s ease;
+  transition:0.25s ease;
   text-decoration:none;
   display:inline-flex;
   align-items:center;
@@ -82,12 +83,19 @@ button:hover,a.btn:hover{
 }
 
 .primary{
-  background:linear-gradient(90deg,rgba(255,77,141,0.4),rgba(255,154,192,0.3));
-  border-color:rgba(255,77,141,0.6);
+  background:linear-gradient(90deg,rgba(255,77,141,0.5),rgba(255,154,192,0.35));
+  border-color:rgba(255,77,141,0.7);
 }
 
 .stage{display:none;}
 .stage.active{display:block;}
+
+.funMessage{
+  margin-top:16px;
+  font-size:15px;
+  color:#ff9ac0;
+  min-height:24px;
+}
 </style>
 </head>
 
@@ -126,9 +134,8 @@ Solo quiero un día contigo, lleno de cariño y risas 🥹💗
 <button class="primary" id="siBtn">Sí 💕</button>
 <button id="noBtn">No</button>
 
-<p style="margin-top:14px;font-size:14px;color:#cfc6ea;">
-(Si intentas apretar “No”… puede que se mueva 😅)
-</p>
+<div class="funMessage" id="funMessage"></div>
+
 </section>
 
 <!-- PANTALLA 3 -->
@@ -175,14 +182,34 @@ $("nerviosa").addEventListener("click",()=>{
 // Pantalla 2
 $("siBtn").addEventListener("click",()=>show("s3"));
 
-// Botón NO solo se mueve (NUNCA cambia de pantalla)
+// Botón NO divertido
 const noBtn=$("noBtn");
+const funMessage=$("funMessage");
+
+let intentos=0;
+
+const mensajes=[
+"¿Por qué quieres apretar “No”? 🤨",
+"¿Seguraaa? 👀",
+"Mmm… eso no estaba en el guion 😅",
+"Piénsalo bien… 😏",
+"No seas así conmigo 🥺",
+"Creo que ese botón está defectuoso 😌"
+];
 
 function moverNo(e){
   e.preventDefault();
+  intentos++;
+
   const x=(Math.random()*2-1)*150;
   const y=(Math.random()*2-1)*80;
   noBtn.style.transform=`translate(${x}px,${y}px)`;
+
+  if(intentos<=mensajes.length){
+    funMessage.textContent = mensajes[intentos-1];
+  } else {
+    funMessage.textContent = "Ese botón no funciona… intenta con el otro 💕";
+  }
 }
 
 noBtn.addEventListener("mouseenter",moverNo);
