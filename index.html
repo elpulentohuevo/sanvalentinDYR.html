@@ -1,101 +1,93 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Para ti 💘</title>
 
 <style>
 :root{
---bg1:#070712;
---bg2:#160818;
---card:#ffffff12;
---border:#ffffff25;
---text:#f8f3ff;
---muted:#ddd2f5;
---accent:#ff4d8d;
---accent2:#ff9ac0;
+  --bg1:#0b0b15;
+  --bg2:#190a1f;
+  --text:#f8f3ff;
+  --muted:#d9cfff;
+  --accent:#ff4d8d;
+  --accent2:#ff9ac0;
 }
 
-*{box-sizing:border-box}
+*{box-sizing:border-box;}
 
 body{
-margin:0;
-min-height:100vh;
-font-family:system-ui,-apple-system,Segoe UI,Roboto;
-color:var(--text);
-background:
-radial-gradient(1000px 600px at 20% 10%, #3b0a3b55, transparent 60%),
-linear-gradient(180deg,var(--bg1),var(--bg2));
-display:flex;
-align-items:center;
-justify-content:center;
-padding:24px;
-overflow:hidden;
+  margin:0;
+  min-height:100vh;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  color:var(--text);
+  background:
+  radial-gradient(900px 600px at 20% 10%, #3b0a3b55, transparent 60%),
+  linear-gradient(180deg,var(--bg1),var(--bg2));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
 }
 
 .card{
-width:min(850px,100%);
-background:linear-gradient(180deg,var(--card),#ffffff08);
-border:1px solid var(--border);
-border-radius:28px;
-padding:32px;
-backdrop-filter:blur(10px);
-box-shadow:0 25px 70px rgba(0,0,0,.6);
-position:relative;
+  width:min(850px,100%);
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:28px;
+  padding:36px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
 }
 
 h1{
-font-size:clamp(28px,4vw,46px);
-margin:0 0 10px;
+  font-size:clamp(28px,4vw,46px);
+  margin:0 0 12px;
 }
 
 p{
-color:var(--muted);
-font-size:18px;
-line-height:1.6;
-margin:0;
+  font-size:18px;
+  color:var(--muted);
+  line-height:1.6;
+  margin:0;
 }
 
 .hr{
-height:1px;
-background:linear-gradient(90deg,transparent,#ffffff30,transparent);
-margin:25px 0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#ffffff40,transparent);
+  margin:28px 0;
 }
 
-button, a.btn{
-padding:12px 18px;
-border-radius:14px;
-border:1px solid var(--border);
-background:#ffffff10;
-color:var(--text);
-cursor:pointer;
-font-size:16px;
-transition:.2s;
-text-decoration:none;
-display:inline-flex;
-align-items:center;
-gap:8px;
+button,a.btn{
+  padding:14px 22px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:rgba(255,255,255,0.08);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.2s ease;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  button:hover, a.btn:hover {
-    transform: translateY(-2px);
-    background: #ffffff20;
-  }
+@media (hover:hover){
+button:hover,a.btn:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,0.18);
+}
+}
 
 .primary{
-background:linear-gradient(90deg,#ff4d8d30,#ff9ac020);
-border-color:#ff4d8d80;
+  background:linear-gradient(90deg,rgba(255,77,141,0.4),rgba(255,154,192,0.3));
+  border-color:rgba(255,77,141,0.6);
 }
 
-.stage{display:none;animation:fade .4s ease forwards;}
+.stage{display:none;}
 .stage.active{display:block;}
-
-@keyframes fade{
-from{opacity:0;transform:translateY(8px);}
-to{opacity:1;transform:translateY(0);}
-}
 </style>
 </head>
 
@@ -103,7 +95,7 @@ to{opacity:1;transform:translateY(0);}
 
 <div class="card">
 
-<!-- STAGE 1 -->
+<!-- PANTALLA 1 -->
 <section class="stage active" id="s1">
 <h1>Hola, mi amor 💘</h1>
 <p>
@@ -114,14 +106,14 @@ Pero primero: prométeme que lo vas a leer con una sonrisa 😊
 <div class="hr"></div>
 
 <button class="primary" id="goS2">Sí, obvio 💖</button>
-<button id="mini">Estoy nerviosa 🫣</button>
+<button id="nerviosa">Estoy nerviosa 🫣</button>
 
-<p id="miniText" style="display:none;margin-top:15px;color:#cfc6ea;">
+<p id="mensajeNerviosa" style="display:none;margin-top:18px;">
 Tranquila… es algo bonito, te lo prometo ✨
 </p>
 </section>
 
-<!-- STAGE 2 -->
+<!-- PANTALLA 2 -->
 <section class="stage" id="s2">
 <h1>¿Aceptarías ser mi San Valentín? 💝</h1>
 <p>
@@ -131,15 +123,15 @@ Solo quiero un día contigo, lleno de cariño y risas 🥹💗
 
 <div class="hr"></div>
 
-<button class="primary" id="btnYes">Sí 💕</button>
-<button id="btnNo">No</button>
+<button class="primary" id="siBtn">Sí 💕</button>
+<button id="noBtn">No</button>
 
-<p style="margin-top:12px;color:#cfc6ea;">
+<p style="margin-top:14px;font-size:14px;color:#cfc6ea;">
 (Si intentas apretar “No”… puede que se mueva 😅)
 </p>
 </section>
 
-<!-- STAGE 3 -->
+<!-- PANTALLA 3 -->
 <section class="stage" id="s3">
 <h1>Te amo… gracias por elegirme 💗</h1>
 <p>
@@ -156,7 +148,7 @@ href="https://www.youtube.com/watch?v=sBMF4dIqxKo">
 
 <br><br>
 
-<a class="btn" id="waBtn" target="_blank">
+<a class="btn" id="whatsappBtn" target="_blank">
 💬 Enviar confirmación por WhatsApp
 </a>
 
@@ -168,37 +160,39 @@ href="https://www.youtube.com/watch?v=sBMF4dIqxKo">
 const $ = id => document.getElementById(id);
 
 function show(stage){
-["s1","s2","s3"].forEach(s=>$(s).classList.remove("active"));
-$(stage).classList.add("active");
+  ["s1","s2","s3"].forEach(s => $(s).classList.remove("active"));
+  $(stage).classList.add("active");
 }
 
+// Pantalla 1
 $("goS2").addEventListener("click",()=>show("s2"));
 
-$("mini").addEventListener("click",()=>{
-const el=$("miniText");
-el.style.display = el.style.display==="none"?"block":"none";
+$("nerviosa").addEventListener("click",()=>{
+  const el=$("mensajeNerviosa");
+  el.style.display = el.style.display==="none"?"block":"none";
 });
 
-$("btnYes").addEventListener("click",()=>show("s3"));
+// Pantalla 2
+$("siBtn").addEventListener("click",()=>show("s3"));
 
-const noBtn=$("btnNo");
-let attempts=0;
+// Botón NO solo se mueve (NUNCA cambia de pantalla)
+const noBtn=$("noBtn");
 
-function dodge(e){
-e.preventDefault();
-attempts++;
-const x=(Math.random()*2-1)*150;
-const y=(Math.random()*2-1)*80;
-noBtn.style.transform=`translate(${x}px,${y}px)`;
+function moverNo(e){
+  e.preventDefault();
+  const x=(Math.random()*2-1)*150;
+  const y=(Math.random()*2-1)*80;
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
 }
 
-noBtn.addEventListener("mouseenter",dodge);
-noBtn.addEventListener("touchstart",dodge,{passive:false});
-noBtn.addEventListener("click",dodge);
+noBtn.addEventListener("mouseenter",moverNo);
+noBtn.addEventListener("touchstart",moverNo,{passive:false});
+noBtn.addEventListener("click",moverNo);
 
+// WhatsApp
 const phone="56971254125";
 const message="Sí, quiero ser tu San Valentín 💘";
-$("waBtn").href=`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+$("whatsappBtn").href=`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 </script>
 
 </body>
