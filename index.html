@@ -23,8 +23,8 @@ body{
   font-family:system-ui,-apple-system,Segoe UI,Roboto;
   color:var(--text);
   background:
-  radial-gradient(1000px 600px at 20% 10%, #3b0a3b55, transparent 60%),
-  linear-gradient(180deg,var(--bg1),var(--bg2));
+    radial-gradient(1000px 600px at 20% 10%, #3b0a3b55, transparent 60%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
   display:flex;
   align-items:center;
   justify-content:center;
@@ -40,6 +40,7 @@ body{
   backdrop-filter:blur(12px);
   box-shadow:0 30px 90px rgba(0,0,0,.65);
   position:relative;
+  overflow:hidden;
 }
 
 h1{
@@ -73,18 +74,41 @@ button,a.btn{
   display:inline-flex;
   align-items:center;
   gap:8px;
+  position:relative;
+  overflow:hidden;
 }
 
 @media (hover:hover){
-button:hover,a.btn:hover{
-  transform:translateY(-3px);
-  background:rgba(255,255,255,0.18);
-}
+  button:hover,a.btn:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,0.18);
+  }
 }
 
 .primary{
   background:linear-gradient(90deg,rgba(255,77,141,0.5),rgba(255,154,192,0.35));
   border-color:rgba(255,77,141,0.7);
+}
+
+/* ✨ Brillo animado del botón Sí */
+.glow::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-60%;
+  width:60%;
+  height:180%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+  transform:rotate(18deg);
+  animation:shine 2.8s ease-in-out infinite;
+  pointer-events:none;
+  opacity:.75;
+}
+@keyframes shine{
+  0%{ left:-70%; opacity:0; }
+  20%{ opacity:.9; }
+  50%{ left:120%; opacity:.65; }
+  100%{ left:120%; opacity:0; }
 }
 
 .stage{display:none;}
@@ -96,6 +120,27 @@ button:hover,a.btn:hover{
   color:#ff9ac0;
   min-height:24px;
 }
+
+/* 💘 Corazones “celebración” */
+.celebrate{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:9999;
+}
+.float-heart{
+  position:absolute;
+  font-size:22px;
+  animation:floatUp 1.9s ease-in forwards;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
+  opacity:0;
+}
+@keyframes floatUp{
+  0%{ transform:translateY(0) scale(.85); opacity:0; }
+  15%{ opacity:1; }
+  100%{ transform:translateY(-180px) scale(1.25); opacity:0; }
+}
 </style>
 </head>
 
@@ -105,60 +150,58 @@ button:hover,a.btn:hover{
 
 <!-- PANTALLA 1 -->
 <section class="stage active" id="s1">
-<h1>Hola, mi amor 💘</h1>
-<p>
-Tengo una pregunta importante que hacerte…<br>
-Pero primero: prométeme que lo vas a leer con una sonrisa 😊
-</p>
+  <h1>Hola, mi amor 💘</h1>
+  <p>
+    Tengo una pregunta importante que hacerte…<br>
+    Pero primero: prométeme que lo vas a leer con una sonrisa 😊
+  </p>
 
-<div class="hr"></div>
+  <div class="hr"></div>
 
-<button class="primary" id="goS2">Sí, obvio 💖</button>
-<button id="nerviosa">Estoy nerviosa 🫣</button>
+  <button class="primary" id="goS2">Sí, obvio 💖</button>
+  <button id="nerviosa">Estoy nerviosa 🫣</button>
 
-<p id="mensajeNerviosa" style="display:none;margin-top:18px;">
-Tranquila… es algo bonito, te lo prometo ✨
-</p>
+  <p id="mensajeNerviosa" style="display:none;margin-top:18px;">
+    Tranquila… es algo bonito, te lo prometo ✨
+  </p>
 </section>
 
 <!-- PANTALLA 2 -->
 <section class="stage" id="s2">
-<h1>¿Aceptarías ser mi San Valentín? 💝</h1>
-<p>
-No necesito nada perfecto…<br>
-Solo quiero un día contigo, lleno de cariño y risas 🥹💗
-</p>
+  <h1>¿Aceptarías ser mi San Valentín? 💝</h1>
+  <p>
+    No necesito nada perfecto…<br>
+    Solo quiero un día contigo, lleno de cariño y risas 🥹💗
+  </p>
 
-<div class="hr"></div>
+  <div class="hr"></div>
 
-<button class="primary" id="siBtn">Sí 💕</button>
-<button id="noBtn">No</button>
+  <button class="primary glow" id="siBtn">Sí 💕</button>
+  <button id="noBtn">No</button>
 
-<div class="funMessage" id="funMessage"></div>
-
+  <div class="funMessage" id="funMessage"></div>
 </section>
 
 <!-- PANTALLA 3 -->
 <section class="stage" id="s3">
-<h1>Te amo… gracias por elegirme 💗</h1>
-<p>
-Te elegiría una y mil veces más…<br>
-mi ojitos de anime 🥺✨
-</p>
+  <h1>Te amo… gracias por elegirme 💗</h1>
+  <p>
+    Te elegiría una y mil veces más…<br>
+    mi ojitos de anime 🥺✨
+  </p>
 
-<div class="hr"></div>
+  <div class="hr"></div>
 
-<a class="btn primary" target="_blank"
-href="https://www.youtube.com/watch?v=sBMF4dIqxKo">
-🎶 Esta será por siempre tu canción
-</a>
+  <a class="btn primary" target="_blank"
+     href="https://www.youtube.com/watch?v=sBMF4dIqxKo">
+    🎶 Esta será por siempre tu canción
+  </a>
 
-<br><br>
+  <br><br>
 
-<a class="btn" id="whatsappBtn" target="_blank">
-💬 Enviar confirmación por WhatsApp
-</a>
-
+  <a class="btn" id="whatsappBtn" target="_blank">
+    💬 Enviar confirmación por WhatsApp
+  </a>
 </section>
 
 </div>
@@ -176,25 +219,59 @@ $("goS2").addEventListener("click",()=>show("s2"));
 
 $("nerviosa").addEventListener("click",()=>{
   const el=$("mensajeNerviosa");
-  el.style.display = el.style.display==="none"?"block":"none";
+  el.style.display = el.style.display==="none" ? "block" : "none";
 });
 
-// Pantalla 2
-$("siBtn").addEventListener("click",()=>show("s3"));
+// 💘 Corazones de celebración al apretar Sí
+function celebrateHearts(){
+  const layer = document.createElement("div");
+  layer.className = "celebrate";
+  document.body.appendChild(layer);
 
-// Botón NO divertido
+  const emojis = ["💗","💖","💘","💝","💕","💞","✨"];
+  const amount = 18;
+
+  for(let i=0;i<amount;i++){
+    const h = document.createElement("div");
+    h.className = "float-heart";
+    h.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+
+    const left = Math.random()*100;
+    const top = 55 + Math.random()*25; // desde la mitad hacia abajo
+    const delay = Math.random()*250;
+
+    h.style.left = left + "vw";
+    h.style.top  = top + "vh";
+    h.style.animationDelay = delay + "ms";
+    h.style.fontSize = (18 + Math.random()*18) + "px";
+
+    layer.appendChild(h);
+  }
+
+  // limpiar capa
+  setTimeout(()=> layer.remove(), 2200);
+}
+
+// Pantalla 2: SOLO el Sí avanza
+$("siBtn").addEventListener("click",()=>{
+  celebrateHearts();
+  // pequeña pausa para que se vean los corazones
+  setTimeout(()=> show("s3"), 450);
+});
+
+// Botón NO divertido (NO avanza nunca)
 const noBtn=$("noBtn");
 const funMessage=$("funMessage");
-
 let intentos=0;
 
 const mensajes=[
-"¿Por qué quieres apretar “No”? 🤨",
-"¿Seguraaa? 👀",
-"Mmm… eso no estaba en el guion 😅",
-"Piénsalo bien… 😏",
-"No seas así conmigo 🥺",
-"Creo que ese botón está defectuoso 😌"
+  "¿Por qué quieres apretar “No”? 🤨",
+  "¿Seguraaa? 👀",
+  "Mmm… eso no estaba en el guion 😅",
+  "Piénsalo bien… 😏",
+  "No seas así conmigo 🥺",
+  "Creo que ese botón está defectuoso 😌",
+  "Ya po… apretá el otro 💕"
 ];
 
 function moverNo(e){
@@ -205,10 +282,10 @@ function moverNo(e){
   const y=(Math.random()*2-1)*80;
   noBtn.style.transform=`translate(${x}px,${y}px)`;
 
-  if(intentos<=mensajes.length){
+  if(intentos <= mensajes.length){
     funMessage.textContent = mensajes[intentos-1];
   } else {
-    funMessage.textContent = "Ese botón no funciona… intenta con el otro 💕";
+    funMessage.textContent = "Ese botón definitivamente no funciona 😅💘";
   }
 }
 
